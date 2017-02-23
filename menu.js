@@ -22,7 +22,7 @@ function lint(text) {
 
 chrome.contextMenus.create({
     id: "joblint",
-    title: "Test %s with joblint",
+    title: "Check %s with joblint",
     contexts:["selection"],
 });
 
