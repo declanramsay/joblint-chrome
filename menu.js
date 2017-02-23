@@ -1,23 +1,15 @@
 function lint(text) {
-  if(!text) {
-    console.log('no text');
-    return;
-  }
-
   var results = joblint(text);
-  var countsArr = Object.keys(results.counts);
 
-  if(!countsArr.length) {
-    console.log('no errors')
-    return;
-  }
-
-  var counts = countsArr.map(function(k) {
-    return k + ": " + results.counts[k];
+  var w = 440;
+  var h = 220;
+  var left = (screen.width/2)-(w/2);
+  var top = (screen.height/2)-(h/2);
+  chrome.windows.create({'url': 'results.html', 'type': 'popup', 'width': w, 'height': h, 'left': left, 'top': top}, function(window) {
+    chrome.storage.sync.set({'results': results}, function() {
+      console.log('Results stored!');
+    });
   });
-
-  var countsString = counts.toString();
-  console.log(countsString);
 }
 
 chrome.contextMenus.create({
