@@ -1,13 +1,20 @@
 function lint(text) {
   var results = joblint(text);
 
-  var w = 440;
-  var h = 220;
-  var left = (screen.width/2)-(w/2);
-  var top = (screen.height/2)-(h/2);
-  
-  chrome.windows.create({'url': 'results.html', 'type': 'popup', 'width': w, 'height': h, 'left': left, 'top': top}, function(window) {
-    chrome.storage.sync.set({'results': results}, function() {
+  var width = 440;
+  var height = 220;
+  var left = (screen.width/2)-(width/2);
+  var top = (screen.height/2)-(height/2);
+
+  chrome.windows.create({
+    'url': 'results.html',
+    'type': 'popup',
+    width,
+    height,
+    left,
+    top,
+  }, (window) => {
+    chrome.storage.sync.set({ results }, () => {
       console.log('Results stored!');
     });
   });
@@ -16,9 +23,9 @@ function lint(text) {
 chrome.contextMenus.create({
   id: "joblint",
   title: "Check %s with joblint",
-  contexts:["selection"],
+  contexts: ["selection"],
 });
 
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
+chrome.contextMenus.onClicked.addListener((info, tab) => {
   lint(info.selectionText);
 })
