@@ -1,0 +1,37 @@
+.issue {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.issue-error {
+  background: #d33b3b;
+}
+
+.issue-warning {
+  background: #d3d13b;
+}
+
+.issue-notice {
+  background: #3bc3d3;
+}
+
+.example {
+  display: block;
+  background: rgba(0, 0, 0, .6);
+  padding: 10px;
+}
+
+.example > span {
+  color: #ffffff;
+}
+
+.occurance {
+  display: inline-block;
+  background: #ff0000;
+  padding: 5px;
+}
+
+h3 {
+  margin-top: 0;
+}

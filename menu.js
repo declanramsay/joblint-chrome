@@ -1,10 +1,10 @@
 function lint(text) {
-  var results = joblint(text);
+  let results = joblint(text);
 
-  var width = 440;
-  var height = 220;
-  var left = (screen.width/2)-(width/2);
-  var top = (screen.height/2)-(height/2);
+  let width = 440;
+  let height = 440;
+  let left = (screen.width/2)-(width/2);
+  let top = (screen.height/2)-(height/2);
 
   chrome.windows.create({
     'url': 'results.html',
