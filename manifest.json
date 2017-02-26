@@ -1,6 +1,6 @@
 {
   "name": "Joblint",
-  "version": "0.2",
+  "version": "1",
   "manifest_version": 2,
   "description": "Allows you to test tech job posts for issues with sexism, culture, expectations, and recruiter fails",
   "icons": {

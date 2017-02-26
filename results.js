@@ -17,22 +17,28 @@ function parseResults(results) {
   let issuesNode = document.querySelector('.issues');
 
   if(!countsKeys.length) {
-    countNode.innerHTML = '<h1>No warnings!</h1>'
+    countNode.innerHTML = '<h1>No Issues! :)</h1>'
+    issuesNode.innerHTML = '';
     return;
   }
 
   let countsArr = countsKeys.map((k) => {
-    return `${k}: ${counts[k]}`;
+    let title = k.capitalize();
+    return `${title}: ${counts[k]}`;
   });
   let countsString = countsArr.join('<br>');
 
   let issuesArr = constructIssuesDOM(issues);
   let issuesStr = issuesArr.join('');
 
-  countNode.innerHTML = `<h2>Count:</h2> ${countsString}`;
-  issuesNode.innerHTML = `<h2>Issues:</h2> ${issuesStr}`;
+  countNode.innerHTML = `<h2>Issue Tally:</h2> ${countsString}`;
+  issuesNode.innerHTML = issuesStr;
   return;
 };
+
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 function constructIssuesDOM(issues) {
   return issues.map((i) => {
