@@ -47,5 +47,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 chrome.windows.onRemoved.addListener((windowId) => {
   if(windowId === popupId) {
     createdWindow = false;
+    chrome.storage.sync.clear();
   }
 })
